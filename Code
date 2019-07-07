@@ -1,0 +1,28 @@
+# Dependencies and Setup
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import requests
+import time
+
+# Import API key
+from api_keys import api_key
+temp_units = "imperial"
+
+# Incorporated citipy to determine city based on latitude and longitude
+from citipy import citipy
+
+# Output File (CSV)
+output_data_file = "Output/weather_df.csv"
+
+# Range of latitudes and longitudes
+lat_range = (-90, 90)
+lng_range = (-180, 180)
+
+# define url
+query_url = f"http://api.openweathermap.org/data/2.5/weather?appid={api_key}&units={temp_units}&q="
+
+# define count of pass throughs
+count_one = 0
+set_one = 1
