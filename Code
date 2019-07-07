@@ -27,7 +27,7 @@ query_url = f"http://api.openweathermap.org/data/2.5/weather?appid={api_key}&uni
 count_one = 0
 set_one = 1
 
-Generate Cities List
+#Generate Cities List
 # List for holding lat_lngs and cities
 lat_lngs = []
 cities = []
@@ -38,7 +38,7 @@ lat_lngs = zip(lats, lngs)
 
 # Identify nearest city for each lat, lng combination
 for lat_lng in lat_lngs:
-city = citipy.nearest_city(lat_lng[0], lat_lng[1]).city_name
+    city = citipy.nearest_city(lat_lng[0], lat_lng[1]).city_name
 
 # If the city is unique, then add it to the cities list
     if city not in cities:
