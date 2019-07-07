@@ -102,3 +102,11 @@ weather_dict = {
     "Max Temp":max_temps,
     "Wind Speed":wind_speeds
 }
+# establish dataframe
+weather_dataframe = pd.DataFrame(weather_dict)
+# show the top of the dataframe
+weather_dataframe.head()
+# output data to csv
+weather_dataframe.to_csv(output_data_file)
+weather_dataframe.count()
+weather_dataframe.head()
