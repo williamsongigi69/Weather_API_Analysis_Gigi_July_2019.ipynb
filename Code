@@ -102,14 +102,18 @@ weather_dict = {
     "Max Temp":max_temps,
     "Wind Speed":wind_speeds
 }
+
 # establish dataframe
 weather_dataframe = pd.DataFrame(weather_dict)
+
 # show the top of the dataframe
 weather_dataframe.head()
+
 # output data to csv
 weather_dataframe.to_csv(output_data_file)
 weather_dataframe.count()
 weather_dataframe.head()
+
 #Plotting the Data
 #Use proper labeling of the plots using plot titles (including date of analysis) and axes labels.
 #Save the plotted figures as .pngs.
@@ -121,6 +125,7 @@ plt.ylabel("Max Temperature (F)")
 plt.grid (b=True,which="major",axis="both",linestyle="-",color="lightgrey")
 plt.savefig("Figures/fig1.png")
 plt.show()
+
 #Latitude vs. Humidity Plot
 plt.scatter(weather_dataframe["Lat"],weather_dataframe["Humidity"],edgecolors="black",facecolors="skyblue")
 plt.title("City Latitude vs. Humidity (01/07/19)")
@@ -130,6 +135,7 @@ plt.ylim(15,105)
 plt.grid (b=True,which="major",axis="both",linestyle="-",color="lightgrey")
 plt.savefig("Figures/fig2.png")
 plt.show()
+
 #Latitude vs. Cloudiness Plot
 plt.scatter(weather_dataframe["Lat"],weather_dataframe["Cloudiness"],edgecolors="black",facecolors="skyblue")
 plt.title("City Latitude vs. Cloudiness (01/07/19)")
@@ -137,4 +143,14 @@ plt.xlabel("Latitude")
 plt.ylabel("Cloudiness (%)")
 plt.grid (b=True,which="major",axis="both",linestyle="-",color="lightgrey")
 plt.savefig("Figures/fig3.png")
+plt.show()
+
+#Latitude vs. Wind Speed Plot
+plt.scatter(weather_dataframe["Lat"],weather_dataframe["Wind Speed"],edgecolors="black",facecolors="skyblue")
+plt.title("City Latitude vs. Wind Speed (01/07/19)")
+plt.xlabel("Latitude")
+plt.ylabel("Wind Speed (mph)")
+plt.ylim(-2,34)
+plt.grid (b=True,which="major",axis="both",linestyle="-",color="lightgrey")
+plt.savefig("Figures/fig4.png")
 plt.show()
