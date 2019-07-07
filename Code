@@ -28,41 +28,20 @@ count_one = 0
 set_one = 1
 
 Generate Cities List
-1
 # List for holding lat_lngs and cities
-2
 lat_lngs = []
-3
 cities = []
-4
-​
-5
 # Create a set of random lat and lng combinations
-6
 lats = np.random.uniform(low=-90.000, high=90.000, size=1500)
-7
 lngs = np.random.uniform(low=-180.000, high=180.000, size=1500)
-8
 lat_lngs = zip(lats, lngs)
-9
-​
-10
+
 # Identify nearest city for each lat, lng combination
-11
 for lat_lng in lat_lngs:
-12
-    city = citipy.nearest_city(lat_lng[0], lat_lng[1]).city_name
-13
-    
-14
-# If the city is unique, then add it to a our cities list
-15
+city = citipy.nearest_city(lat_lng[0], lat_lng[1]).city_name
+
+# If the city is unique, then add it to the cities list
     if city not in cities:
-16
-        cities.append(city)
-17
-​
-18
+    cities.append(city)
 # Print the city count to confirm sufficient count
-19
 len(cities)
