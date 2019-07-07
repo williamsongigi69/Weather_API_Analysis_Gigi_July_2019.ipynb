@@ -45,3 +45,60 @@ city = citipy.nearest_city(lat_lng[0], lat_lng[1]).city_name
     cities.append(city)
 # Print the city count to confirm sufficient count
 len(cities)
+#Perform API Calls
+#Perform a weather check on each city using a series of successive API calls
+#Include a print log of each city as it'sbeing processed (with the city number and city name)
+# set lists for the dataframe
+city_two = []
+cloudinesses = []
+dates = []
+humidities = []
+lats = []
+lngs = []
+max_temps = []
+wind_speeds = []
+countries = []
+
+# set initial count quantities for organization
+count_one = 0
+set_one = 1
+
+# loops for creating dataframe columns
+for city in cities:
+    try:
+        response = requests.get(query_url + city.replace(" ","&")).json()
+        cloudinesses.append(response['clouds']['all'])
+        countries.append(response['sys']['country'])
+        dates.append(response['dt'])
+        humidities.append(response['main']['humidity'])
+        lats.append(response['coord']['lat'])
+        lngs.append(response['coord']['lon'])
+        max_temps.append(response['main']['temp_max'])
+        wind_speeds.append(response['wind']['speed'])
+        if count_one > 48:
+            count_one = 1
+            set_one += 1
+            city_two.append(city)
+        else:
+            count_one += 1
+            city_two.append(city)
+        print(f"Processing Record {count_one} of Set {set_one} | {city}")
+    except Exception:
+        print("City not found. Skipping...")
+print("------------------------------\nData Retrieval Complete\n------------------------------")    
+
+#Convert Raw Data to DataFrame
+#Export the city data into a .csv.
+#Display the DataFrame
+# create a dictionary for establishing dataframe
+weather_dict = {
+    "City":city_two,
+    "Cloudiness":cloudinesses,
+    "Country":countries,
+    "Date":dates,
+    "Humidity":humidities,
+    "Lat":lats,
+    "Lng":lngs,
+    "Max Temp":max_temps,
+    "Wind Speed":wind_speeds
+}
