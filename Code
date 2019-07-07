@@ -42,7 +42,7 @@ for lat_lng in lat_lngs:
 
 # If the city is unique, then add it to the cities list
     if city not in cities:
-    cities.append(city)
+        cities.append(city)
 # Print the city count to confirm sufficient count
 len(cities)
 #Perform API Calls
